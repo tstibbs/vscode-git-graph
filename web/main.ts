@@ -1592,6 +1592,7 @@ class GitGraphView {
 		});
 
 		colHeadersElem.addEventListener('contextmenu', (e: MouseEvent) => {
+			e.preventDefault();
 			e.stopPropagation();
 
 			const toggleColumnState = (col: number, defaultWidth: number) => {
@@ -1963,6 +1964,7 @@ class GitGraphView {
 
 			if ((eventElem = <HTMLElement>eventTarget.closest('.gitRef')) !== null) {
 				// .gitRef was right clicked
+				e.preventDefault();
 				e.stopPropagation();
 				const commitElem = <HTMLElement>eventElem.closest('.commit')!;
 				const commit = this.getCommitOfElem(commitElem);
@@ -2000,6 +2002,7 @@ class GitGraphView {
 
 			} else if ((eventElem = <HTMLElement>eventTarget.closest('.commit')) !== null) {
 				// .commit was right clicked
+				e.preventDefault();
 				e.stopPropagation();
 				const commit = this.getCommitOfElem(eventElem);
 				if (commit === null) return;
